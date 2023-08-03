@@ -27,7 +27,6 @@ const winningPatterns = [
   [7, 8, 9],
 ];
 
-//add click event to each box
 boxes.forEach((box) => {
   box.addEventListener(
     "click",
@@ -57,9 +56,7 @@ boxes.forEach((box) => {
           winnerDeclaration.classList.toggle("show-winner");
           winnerText.innerText = "The winner is player one!";
           winnerText.style.color = "#F2B147";
-          //playerOneScore++
           addPlayerOneScore();
-          // line below shows us the score increment before refreshing
           playerOnePlaceholder.innerText = sessionStorage.getItem("p1Score");
         } else if (checkForWinner(playerTwoChoices)) {
           winnerDeclaration.classList.toggle("show-winner");
@@ -80,7 +77,6 @@ boxes.forEach((box) => {
   );
 });
 
-//keep track of score, testing innerText
 if (!sessionStorage.getItem("p1Score")) {
   sessionStorage.setItem("p1Score", 0);
 }
@@ -115,7 +111,6 @@ function addPlayerTwoScore() {
   sessionStorage.setItem("p2Score", playerTwoScore);
 }
 
-//end of sesh
 
 restartBtn.addEventListener("click", restartAndClear);
 
@@ -126,7 +121,6 @@ function restartAndClear() {
 function checkForWinner(arr) {
   return winningPatterns.some((combinations) => {
     return combinations.every((element) => {
-      //[5, 2, 8] indecombinations //[1, 3, 5]
       return arr.includes(element);
     });
   });
